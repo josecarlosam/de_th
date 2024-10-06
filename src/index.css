@@ -1,0 +1,77 @@
+.App {
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.main-content {
+  display: flex;
+  gap: 20px;
+}
+
+.ag-theme-alpine {
+  --ag-header-background-color: #f0f0f0;
+  --ag-odd-row-background-color: #f8f8f8;
+}
+
+.ag-header-cell-label {
+  font-weight: bold;
+}
+
+.ag-row-hover {
+  background-color: #e6f7ff !important;
+}
+
+.favorite-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2em;
+}
+
+.country-details {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  flex: 1;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.favorites-list {
+  margin-top: 20px;
+}
+
+.favorites-list h2 {
+  color: #333;
+}
+
+.favorites-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.favorites-list li {
+  cursor: pointer;
+  padding: 5px 0;
+}
+
+.favorites-list li:hover {
+  text-decoration: underline;
+}
