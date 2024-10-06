@@ -31,34 +31,47 @@ function App() {
 
   const toggleFavorite = (country) => {
     const newFavorites = favorites.some(fav => fav.cca3 === country.cca3)
-      ? favorites.filter(fav => fav.cca3 !== country.cca3)
-      : [...favorites, country];
+        ? favorites.filter(fav => fav.cca3 !== country.cca3)
+        : [...favorites, country];
     setFavorites(newFavorites);
     localStorage.setItem('favorites', JSON.stringify(newFavorites));
   };
 
   return (
-    <div className="App">
-      <h1>REST Countries</h1>
-      <SearchBar onSearch={handleSearch} />
-      <div className="main-content">
-        <CountryGrid
-          countries={countries}
-          searchTerm={searchTerm}
-          onCountrySelect={handleCountrySelect}
-          favorites={favorites}
-          toggleFavorite={toggleFavorite}
+      <div className="app">
+        <h1>World Countries Explorer</h1>
+        <input
+            type="text"
+            placeholder="Search countries..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
         />
-        {selectedCountry && (
-          <CountryDetails
-            country={selectedCountry}
-            isFavorite={favorites.some(fav => fav.cca3 === selectedCountry.cca3)}
-            toggleFavorite={toggleFavorite}
-          />
-        )}
+        <div className="main-content">
+          <div className="left-column">
+            <CountryGrid
+                countries={countries}
+                searchTerm={searchTerm}
+                onCountrySelect={setSelectedCountry}
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+            />
+          </div>
+          <div className="right-column">
+            {selectedCountry && (
+                <CountryDetails
+                    country={selectedCountry}
+                    isFavorite={favorites.some(fav => fav.cca3 === selectedCountry.cca3)}
+                    toggleFavorite={toggleFavorite}
+                />
+            )}
+            <FavoritesList
+                favorites={favorites}
+                onCountrySelect={setSelectedCountry}
+            />
+          </div>
+        </div>
       </div>
-      <FavoritesList favorites={favorites} onCountrySelect={handleCountrySelect} />
-    </div>
   );
 }
 

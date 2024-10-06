@@ -12,6 +12,22 @@ const CountryGrid = ({ countries, searchTerm, onCountrySelect, favorites, toggle
       filter: true,
       sort: 'asc',
     },
+    {
+      field: 'flags.png',
+      headerName: 'Flag',
+      sortable: false,
+      filter: false,
+      width: 80,
+      cellRenderer: (params) => (
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+            <img
+                src={params.value}
+                alt={`Flag of ${params.data.name.common}`}
+                style={{ width: '40px', height: '30px', objectFit: 'cover' }}
+            />
+          </div>
+      ),
+    },
     { field: 'population', headerName: 'Population', sortable: true, filter: 'agNumberColumnFilter' },
     { field: 'languages', headerName: 'Languages', valueGetter: (params) => Object.values(params.data.languages || {}).join(', '), sortable: true, filter: true },
     { field: 'currencies', headerName: 'Currencies', valueGetter: (params) => Object.keys(params.data.currencies || {}).join(', '), sortable: true, filter: true },
